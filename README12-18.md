@@ -95,6 +95,7 @@ _.debounce = function(func, wait, immediate) {
   `wait`参数代表`debounce`时间， `_.now()`返回当前时间的时间戳，同样以ms 为单位。 如果传入了 `immediate`,会立即触发回调函数。
 
   应用场景：
+
      - 在使用[高德地址联想输入提示](http://lbs.amap.com/api/javascript-api/guide/map-data/input_prompt#t2)时，只有在用户停止键盘输入时，才去进行ajax请求
      - [elementUI inputNumber计算器组件中](http://element-cn.eleme.io/#/zh-CN/component/input-number),为了防止用户多次点击，数字自动增减，也使用了防抖操作，有兴趣可以[查看源码](https://github.com/ElemeFE/element/blob/dev/packages/input-number/src/input-number.vue#L229)
 
