@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>函数节流 测试</title>
+</head>
+
+<body>
+  <script>
+    function throttle(method, context) {
+      clearTimeout(method.tId);
+      method.tId = setTimeout(function() {
+        method.call(context)
+      }, 500)
+    }
+
+    var  i = 0;
+    window.onresize = function(){
+        throttle(function(){
+             console.log(i++);
+          },window)
+    }
+  </script>
+</body>
+
+</html>
