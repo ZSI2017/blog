@@ -5,7 +5,9 @@
 ----------
 ## 函数节流 ##
 
-在浏览器中，频繁的DOM操作非常消耗内存和CPU时间，所有现在的react 和 vue 等前端框架都提出了虚拟DOM的概念，会把多吃DOM操作合并到一次真实操作中，就是使用了[Diff算法](http://www.infoq.com/cn/articles/react-dom-diff)
+在浏览器中，频繁的DOM操作非常消耗内存和CPU时间，所有现在的react 和 vue 等前端框架都提出了虚拟DOM的概念，会把多次DOM操作合并到一次真实DOM操作中，就是使用了[Diff算法](http://www.infoq.com/cn/articles/react-dom-diff).
+
+** 当然，这里我们不是要讨论这么高级的算法，只是想简单的使用 `setTimeout` 来完成函数节流。比如 `onresize`事件就是在 浏览器中最容易触发的事件，就需要使到函数节流 **
 
 最早接触到这个概念的时候，是在《高程3》最后几章上面。
 
