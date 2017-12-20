@@ -14,11 +14,12 @@
    ![fragmentRE](./fragmentRE.PNG)
 
   `\s*` ,贪婪匹配空白符 ，`[^>]` 表示："<" 和">"中间不能出现">"，中间内容时两个分支单词字符或者！，里面的`()`进行分组引用，方便提取中间内容
-    ```
+
+```
        fragmentRE.test("<sccc/>") && RegExp.$1;
        // "sccc"
 
-    ```
+```
 
 
 ### 2，singleTagRE = /^<(\w+)\s*\/?>(?:<\/\1>|)$/
@@ -52,21 +53,22 @@ zepto.fragment = function(html, name, properties) {
 
  [看源码位置](https://github.com/madrobby/zepto/blob/master/src/zepto.js#L12)
 
- **验证自闭合的标签，形如：< div /> **
+
+**验证自闭合的标签，形如：< div />**
 
  **zepto 里面 主要作用 < div />  ==> < div>< /div>**
 
  可视化形式：
  ![tagExpanderRE](./tagExpanderRE.PNG)
 
- 最后面的，`/ig`: 两个修饰符 `g`:表示全局匹配， `i`表示忽略大小写。
+ 最后面的，`//ig`: 两个修饰符 `g`:表示全局匹配， `i`表示忽略大小写。
  ![igm](./igm.PNG)
 
  然后再看 正则主体部分内容，"< " 和 "\/ >"中间的内容大致可以分为两部分：
   - `(?!area|br|col|embed|hr|img|input|link|meta|param)`
 
       上面大致可以简化成 `(?!p)`，也就是要匹配位置。
-      要解释这个，首先要对应的提出`(?=p)`,p 是一个子模式，指代p前面的位置，也说明**该位置后面的字符要匹配p**.列举书中实例
+      要解释这个，首先要对应的提出`(?=p)`，p 是一个子模式，指代p前面的位置，也说明**该位置后面的字符要匹配p**.列举书中实例
       ```
         var result = "hello".replace(/(?=l)/g,'#');
         console.log(result);
@@ -82,14 +84,14 @@ zepto.fragment = function(html, name, properties) {
       > (?=p) 和 （?!p) 学名分别是 positive lookahead  和 negative lookahead.
       > 中文翻译分别是正向先行断言和负向先行断言
 
-      这里我们可以理解为**#后面的字符串不能匹配 `l`**，这里说的`#`,在原字符串"hello"中时不存在的，只是代表字符之间的各个位置，输出`#h#ell#o#`只是实例化匹配展示出来了对应的位置。
+      这里我们可以理解为 **`#`后面的字符串不能匹配`l`**，这里说的`#`,在原字符串"hello"中时不存在的，只是代表字符之间的各个位置，输出`#h#ell#o#`只是实例化匹配展示出来了对应的位置。
 
-      ** `<`右边不能是 `area,br,col,embed,hr,img,input,link,meta,param`,比如像 < img /> < br/> 这样就不需要转化了 **
+      **`<`右边不能是 `area,br,col,embed,hr,img,input,link,meta,param`,比如像 < img /> < br/> 这样就不需要转化了**
 
       ```
         var tagExpanderRE = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/ig;
         "<img />".replace(tagExpanderRE, "<$1></$2>")
-        // "<img /> "
+        // 输出 "<img /> "
 
       ```
 
@@ -103,9 +105,31 @@ zepto.fragment = function(html, name, properties) {
   ```
   var tagExpanderRE = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/ig;
   '<div class="div-class" />'.replace(tagExpanderRE, "<$1></$2>")
-  // "<div class="div-class" ></div>"
+  // 输出 "<div class="div-class" ></div>"
 
   ```
 
 ### 4，rootNodeRE = /^(?:body|html)$/i
+   [看源码位置](https://github.com/madrobby/zepto/blob/master/src/zepto.js#L13)
+
+   **通过检测节点的nodeName属性，判断是否为body或者html 根节点**
+   
+   可视化形式：
+   ![root](./root.PNG)
+
+```
+  var ootNodeRE = /^(?:body|html)$/i;
+  var htmlDom = document.querySelector("html")
+  rootNodeRE.test(htmlDom.nodeName);
+  // 输出 true;
+  var divDom = document.querySelector("div");
+  rootNodeRE.test(htmlDom.nodeName);
+  // 输出 false
+
+```
+
+
+
+
+
 https://segmentfault.com/q/1010000007195403
