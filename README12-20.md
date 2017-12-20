@@ -1,4 +1,6 @@
- 对于Zepto源码分析，可以说是每个前端修炼自己js技能的必经之路，所以前段时间在工作之余，对[zepto@1.1.6的源码](https://cdn.bootcss.com/zepto/1.1.6/zepto.js)大致读了了一遍，现在回头看看，发现期间并没有做多少笔记，在这里再分类别总结一下。
+ 对于Zepto源码分析，可以说是每个前端修炼自己js技能的必经之路。
+当然，在读源码过程中，比较难以理解的地方，就是里面出现的各种神奇的正则表达式。
+ 本文主要分析对象是[zepto@1.1.6的源码](https://cdn.bootcss.com/zepto/1.1.6/zepto.js)中的**正则表达式**。
 
 
  **这篇文章，主要总结了zepto源码中使用到的一些正则表达式，分析每个正则使用场景**
@@ -9,11 +11,11 @@
  ###  1，fragmentRE = /^\s*<(\w+|!)[^>]*>/
   [看源码位置](https://github.com/madrobby/zepto/blob/master/src/zepto.js#L10)
 
-  **验证目标是否为html节点，比如" < html >，  < script> 样的单个未闭合节点**
+  **匹配目标是否为html节点，比如" < html >，  < script> 样的单个未闭合节点**
    **可视化形式是：**
    ![fragmentRE](./fragmentRE.PNG)
 
-  `\s*` ,贪婪匹配空白符 ，`[^>]` 表示："<" 和">"中间不能出现">"，中间内容时两个分支单词字符或者！，里面的`()`进行分组引用，方便提取中间内容
+  `\s*` ,贪婪匹配空白符 ，`[^>]` 表示：匹配到的"<" 和">"中间内容不能出现">"，中间内容出现两个分支单词字符或者！，里面的`()`进行捕获分组，后面提取第一组的内容，下面代码中，则通过RegExp.$1 提取。
 
 ```
        fragmentRE.test("<sccc/>") && RegExp.$1;
@@ -54,7 +56,7 @@ zepto.fragment = function(html, name, properties) {
  [看源码位置](https://github.com/madrobby/zepto/blob/master/src/zepto.js#L12)
 
 
-**验证自闭合的标签，形如：< div />**
+**匹配自闭合的标签，形如：< div />**
 
  **zepto 里面 主要作用 < div />  ==> < div>< /div>**
 
@@ -100,7 +102,7 @@ zepto.fragment = function(html, name, properties) {
       这里使用了捕获分组，分了两组`(([\w:]+)[^>]*)` 和 `([\w:]+)`，作用在于，replace的时候可以通过$1 和 $2 提取匹配到的数据。
 
       `([\w:]+)` 中 `+` 就是 {1，}的简写 ，表示`\w`(数字，字母，下划线)或者` :` 至少出现一次 通常是标签名，div,span 等等
-      `(([\w:]+)[^>]*)`   多了 `[^>]*` 表示处理`>`以外的任意内容，比如 < div class="div-class"> 中的class。可以这么理解，比 `.*`能够匹配所有内容多加了一个条件
+      `(([\w:]+)[^>]*)`   多了 `[^>]*` 表示匹配`>`以外的任意内容，比如 < div class="div-class"> 中的` class="div-class"`。可以这么理解，比 `.*`能够匹配所有内容多加了一个条件
 
   ```
   var tagExpanderRE = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/ig;
@@ -113,7 +115,7 @@ zepto.fragment = function(html, name, properties) {
    [看源码位置](https://github.com/madrobby/zepto/blob/master/src/zepto.js#L13)
 
    **通过检测节点的nodeName属性，判断是否为body或者html 根节点**
-   
+
    可视化形式：
    ![root](./root.PNG)
 
@@ -127,9 +129,3 @@ zepto.fragment = function(html, name, properties) {
   // 输出 false
 
 ```
-
-
-
-
-
-https://segmentfault.com/q/1010000007195403
