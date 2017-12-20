@@ -4,23 +4,73 @@
 <head>
   <meta charset="utf-8">
   <title>函数节流 测试</title>
+  <input id= "input_id"/>
 </head>
 
 <body>
   <script>
-    function throttle(method, context) {
+
+// var nows = Date.now || function() {
+//    return new Date().getTime();
+//  };
+// // console.log(now);
+//   function  throttle (func, wait, options) {
+//     var context, args, result;
+//     var timeout = null;
+//     var previous = 0;
+//     if (!options) options = {};
+//     var later = function() {
+//       previous = options.leading === false ? 0 :nows();
+//       timeout = null;
+//       result = func.apply(context, args);
+//       if (!timeout) context = args = null;
+//     };
+//     return function() {
+//       var now = nows();
+//       if (!previous && options.leading === false) previous = now;
+//       var remaining = wait - (now - previous);
+//       context = this;
+//       args = arguments;
+//       if (remaining <= 0 || remaining > wait) {
+//         if (timeout) {
+//           clearTimeout(timeout);
+//           timeout = null;
+//         }
+//         previous = now;
+//         result = func.apply(context, args);
+//         if (!timeout) context = args = null;
+//       } else if (!timeout && options.trailing !== false) {
+//         timeout = setTimeout(later, remaining);
+//       }
+//       return result;
+//     };
+//   };
+
+
+    function throttle(method, context,arg1) {
+      console.log(method);
       clearTimeout(method.tId);
       method.tId = setTimeout(function() {
-        method.call(context)
-      }, 500)
+        method.call(context,arg1)
+      }, 500);
+      // console.log(method.tId);
+      // method.tId = setTimeout(function() {
+      //   method.call(context)
+      // }, 500)
     }
 
     var  i = 0;
-    window.onresize = function(){
-        throttle(function(){
-             console.log(i++);
-          },window)
+    var handler = function(i){
+      console.log(i);
     }
+   // var throttled = throttle(handler,1000)
+   var qsa = document.querySelector("#input_id");
+   qsa.addEventListener('input',function(e){
+        throttle(handler,window,e.target.value);
+   },false)
+    // window.onresize = function(){
+    //     throttle(handler,window)
+    // }
   </script>
 </body>
 
