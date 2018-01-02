@@ -11,4 +11,5 @@
 - [es5 常用数组方法](./README9-29.md)
 - [Zepto源码分析- 正则表达式](./README12-20.md)
 - [Zepto源码分析- DOM操作篇](./README12-21.md)
+- [Vue2.0父子组件间事件派发机制](./README2018-01-02.md)
 - [整理网上优秀文章,博客,论坛,...](https://github.com/ZSI2017/links)
