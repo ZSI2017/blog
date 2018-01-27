@@ -8,14 +8,29 @@
   <body>
     <div id="app">
       {{message}}
-      <p v-if = "seen" :class=[seen]>现在你看到我了</p>
+      <p v-if = "seen" :class="message">现在你看到我了</p>
+      <div class="static" :class="{active:isActive,'text-danger':hasError}" /></div>
+
+       <div :style ="{color:activeColor,fontSize:fontSize+'px'}"></div>
+
+              <div v-bind:style="[baseStyles, overridingStyles]"></div>
     </div>
     <script>
       var app = new Vue({
         el:"#app",
         data:{
           message:'hello vue',
-          seen:true
+          seen:true,
+          isActive:true,
+          hasError:false,
+          activeColor: 'red',
+          fontSize: 30,
+          baseStyles:{
+            color:'red'
+          },
+          overridingStyles:{
+            fontSize:'30px'
+          }
         }
       })
     </script>
