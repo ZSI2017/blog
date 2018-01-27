@@ -10,6 +10,7 @@
 - [es5 常用数组方法](./README9-29.md)
 ---
 ## Vue ##
+- [Vue2.x 总结](./README2018-01-27.md)
 - [v-model 详解](./README8-13.md)
 - [Mixin - vue](./README8-13pm.md)
 - [Vue2.0父子组件间事件派发机制](./README2018-01-02.md)
