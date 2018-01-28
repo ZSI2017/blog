@@ -25,12 +25,23 @@
             not 0/1
         </div>
 
+        <div v-for="(item,idx) in items" :key="idx">
+           {{idx}} --- {{item.product}}
+        </div>
+
+        <input v-model = "message" placeholer= "edit me">
+        <p>Message is {{message}}</p>
+
 
     </div>
     <script>
       var app = new Vue({
         el:"#app",
         data:{
+          items:[
+           {product:"foo"},
+           {product:"bar"}
+         ],
           num:3,
           message:'hello vue',
           seen:true,
