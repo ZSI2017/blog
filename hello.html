@@ -6,7 +6,7 @@
     <script src="https://gw.alipayobjects.com/as/g/h5-lib/vue/2.4.4/vue.min.js"></script>
   </head>
   <body>
-    <div id="app">
+    <div id="app" style="width:100%;border:1px solid black;padding:20px;box-sizing:border-box">
       {{message}}
       <p v-if = "seen" :class="message">现在你看到我了</p>
       <div class="static" :class="{active:isActive,'text-danger':hasError}" ></div>
@@ -32,9 +32,33 @@
         <input v-model = "message" placeholer= "edit me">
         <p>Message is {{message}}</p>
 
+        <button @click="handleClick" type="button" name="button">methods 点击测试</button>
+
+    <!--  child 组件  -->
+
+
+    <br/> <hr />
+    <my-child :my-message.sync="message"></my-child>
 
     </div>
+    <template id="child">
+      <div style="height:100px;width:100%;border:1px solid #108ee9">
+        <h4>child</h4>
+        <span id="child"> I am from childe + {{myMessage}}</span><br />
+        <input @click="handleme" type="button" name="" value="click me change message">
+      </div>
+    </template>
     <script>
+      Vue.component('myChild',{
+        props:['myMessage'],
+        template:'#child',
+        methods:{
+          handleme:function(){
+            this.$emit("update:myMessage","from child")
+          }
+        }
+      });
+
       var app = new Vue({
         el:"#app",
         data:{
@@ -55,6 +79,12 @@
           overridingStyles:{
             fontSize:'30px'
           }
+        },
+        methods:{
+          handleClick(){
+             this.message = "I am just clicking"
+          }
+
         }
       })
     </script>
