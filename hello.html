@@ -9,16 +9,29 @@
     <div id="app">
       {{message}}
       <p v-if = "seen" :class="message">现在你看到我了</p>
-      <div class="static" :class="{active:isActive,'text-danger':hasError}" /></div>
+      <div class="static" :class="{active:isActive,'text-danger':hasError}" ></div>
 
        <div :style ="{color:activeColor,fontSize:fontSize+'px'}"></div>
 
-              <div v-bind:style="[baseStyles, overridingStyles]"></div>
+        <div v-bind:style="[baseStyles, overridingStyles]"></div>
+
+        <div v-if="num === 0">
+         0
+        </div>
+        <div v-else-if="num === 1">
+         1
+        </div>
+        <div v-else>
+            not 0/1
+        </div>
+
+
     </div>
     <script>
       var app = new Vue({
         el:"#app",
         data:{
+          num:3,
           message:'hello vue',
           seen:true,
           isActive:true,
