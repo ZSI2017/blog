@@ -13,8 +13,7 @@
 - [Vue2.x 总结](./README2018-01-27.md)
 - [v-model 详解](./README8-13.md)
 - [Mixin - vue](./README8-13pm.md)
-- [Vue2.0父子组件间事件派发机制](./README2018-01-02.md)
-
+- [Vue2.0组件间事件派发机制](./README2018-01-02.md)
 - [npm -开发与生产环境](./README8-15.md)
 ---
 ## Zepto ##
