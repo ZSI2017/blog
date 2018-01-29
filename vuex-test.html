@@ -39,61 +39,17 @@
 
 
     <br/> <hr />
-
-    <fieldset>
-      <legend> 子组件 my-child </legend>
-      <my-child :my-message.sync="message"></my-child>
-    </fieldset>
-
-
-    <fieldset>
-        <legend>Vuex</legend>
-        <p>{{count}}</p>
-        <p v-show="bComputed">calculating...</p>
-        <p>
-          <button @click="increment" type="button" name="button">＋</button>
-          <button  @click="decrement" type="button" name="button">－</button>
-        </p>
-
-    </fieldset>
-    </div>
+    <my-child :my-message.sync="message"></my-child>
 
     </div>
     <template id="child">
-      <div>
+      <div style="height:100px;width:100%;border:1px solid #108ee9">
+        <h4>child</h4>
         <span id="child"> I am from childe + {{myMessage}}</span><br />
         <input @click="handleme" type="button" name="" value="click me change message">
       </div>
     </template>
     <script>
-
-
-    var delay = (timeout,cb) => new Promise(resolve => setTimeout(()=>{cb(); resolve("test incrementAsync")},timeout))
-
-     var store = new Vuex.Store({
-       state:{
-         count:0
-       },
-       getters:{
-          getState:state=>{
-            return state.count
-          }
-       },
-       mutations:{
-         increment:state => state.count++,
-         decrement:state => state.count--
-       },
-       actions:{
-         incrementAsync({commit}) {
-             return delay(600,function(){commit("increment")})
-
-         },
-         decrementAsync({commit}) {
-             return delay(600,function(){commit('decrement')});
-         }
-       }
-
-     })
       Vue.component('myChild',{
         props:['myMessage'],
         template:'#child',
@@ -111,7 +67,6 @@
            {product:"foo"},
            {product:"bar"}
          ],
-         bComputed:false,
           num:3,
           message:'hello vue',
           seen:true,
@@ -129,27 +84,9 @@
         methods:{
           handleClick(){
              this.message = "I am just clicking"
-          },
-          increment(){
-            this.bComputed = true;
-            store.dispatch('incrementAsync').then((payload)=>{
-              this.bComputed = false;
-              console.log(payload)
-            })
-          },
-          decrement(){
-            this.bComputed = true;
-            store.dispatch('decrementAsync').then(()=>{
-              this.bComputed = false;
-            })
           }
-        },
-        computed:{
-           count(){
-             return store.getters.getState
-           }
-        },
 
+        }
       })
     </script>
   </body>
