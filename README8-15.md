@@ -1,56 +1,101 @@
-### 编写可维护代码，就需要有一定的代码规范。
+## npm ##
 
-## 基本命名规范 ##
+   npm 是javascript 包管理，也是世界上最大的软件记录。
 
-- #### 变量名应为名词,eg： car,person
+   使用npm 可以安装，分享和贡献自己的代码，管理项目中的依赖包，
 
-- #### 函数名以动词开始。 getName(), 返回类型是布尔类型，一般以is开头，eg: isEnable();
-- #### 变量和函数命名，不要担心长度，合乎逻辑重要。
+## package.json ##
 
-## 变量命名 -- 类型透明##
-- #### 通过初始化指定变量类型
-    ```
-        var found = false;    // 布尔类型
-        var count = -1;       // 数字类型
-        var name = “”;        // 字符串
-        var person = null;    // 对象
-       ```
-- #### 匈牙利标记法
-  **变量名前面加上一个或者多个字符来表示数据类型。**
-  ```
-        "o"  =>变量     var oPerson;
-        "s" => 字符串   var iCount
-        “i”  => 整数    var sName;
-        “f” => 浮点数   var fMath;
-        “b”  => 布尔值  var bFound;
-       ```
-##  全局命名空间  ##
-- #### 创建唯一的全局的对象，然后再把需要的变量和函数添加到对象上。
-- #### 避免与其他功能冲突。
-- #### 产生对应的作用域
-  ```
-      // 声明全局对象
-      var Wrox = {};
-      // 为Wrox 创建 Professional JavaScript 命名空间
-      Wrox.ProJS = {};
 
-      // 分别在添加各种事件
-      Wrox.ProJS.EventUtil = {};
-      Wrox.ProJS.CookieUtil = {};
 
-     // 在使用的时候
-     Wrox.ProJS.EventUtil.adHandler();
+  npm的包依赖配置json文件，开发时可以在里面记录所有依赖包，也可以配置一些简单的npm 脚本，
+
+
+```
+{
+  "name": "xxxxxx",
+  "version": "11111",
+  "description": "xxxxxxx",
+  "author": xxxxx",
+  "private": true,
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "node build.js "
+  },
+  "dependencies": {
+
+  },
+  "devDependencies": {
+    "webpack": "^2.6.1",
+  }
+}
+
+```
+  上面是一个简单的package.json 文件的，里面有一些基本的配置项，主要有作用的是 `scripts`,`dependencies`,`devDependencies` 三类属性。
+
+##npm scripts##
 
     ```
+      //在scripts 字段中定义一些简单的脚本，比如上面定义了三个脚本，执行时可以这样：
+      npm run dev  相当于执行
+      node server.js   
+      // 查看当前所有Npm脚本命令
+      npm run
+    ```
+
+    ```
+     *几种常见的简写形式*
+      npm start 相当于 npm run start
+      npm stop 相当于  npm run stop
+      npm test  相当于 npm run test
+      npm restart 相当于 npm run stop && npm run restart && npm run start
+
+    ```
+   **原理：**
+
+
+> npm run 新建一个shell,并且把当前目录的 node——modules/.bin
+> 子目录加入PATH变量，执行结束后，再将PATH 变量恢复原样
+
+   [npm scripts 详细解释][1]    
+
+##dependencies、devDependencies##
+
+      npm install Xxx --save 安装模块，并把模块名和版本号添加到dependencies 部分。
+      npm install xxx --save-dev 安装模块,把模块名和版本号写在devdependencies部分。
+
+
+   **区别就是，在生产环境，使用`npm install --production`安装 dependencies 部分的模块,**
+   **在开发环境，npm i ，安装所有devDependencies 和 dependencies里面的模块**
+
+所以，在生产环境，就不需要安装 gulp ,webpack 这样的模块，可以通过这种方法区分
+
+
+  **几种简写指令：**
+   ```
+      -P 相当于 --save-prod，  添加dependencies 里面所有的包。在 -D -O 不存在时，-P 就是默认值
+      -S 相当于 --save;      添加dependencies 里面所有的包。
+      -D 相当于 --save-dev;  添加devDependencies 里面所有的包，
+      -O 相当于 --save-optional, 添加在 optionalDependencies 里面的包，
+      --no-save：      阻止保存记录在dependencies 中，
+
+   ```
+
+   合理使用这两个依赖记录，可以保证减少在生产环境下，打包后体积大小。
+
+##传递参数##
+
+ 上门写到 使用`npm run`等命令可以执行相应的脚本，同样也可以在其中进行参数传递，跟在[Shell中通过process.env属性来传递参数][2]进行参数的传递的方法基本一样。
 
 
 
+>    通常的方法是，在环境变量**NODE_ENV**中传递参数，使用它来确定当前所处的开发阶段，生产阶段设为production,开发阶段设为develop 或者staging,然后在脚本中读出 process.env.NODE_ENV即可
 
-----------
- 最近收集了一些大神们总结的代码规范，这里特意罗列出来。
-   - [总结github代码库的书写习惯](http://alloyteam.github.io/CodeGuide/)(不只是前端)
-   - [百度代码规范](https://zhuanlan.zhihu.com/p/19884834?columnSlug=fuyun)
-   - [网易前端代码规范](http://nec.netease.com/standard)
-   - [前端开发规范手册](http://zhibimo.com/read/Ashu/front-end-style-guide/)
-   - [腾讯前端代码规范](http://tgideas.qq.com/doc/)
-   - [JavaScript-Garden](http://bonsaiden.github.io/JavaScript-Garden/)(非常值得看)
+     ```
+        NODE_ENV = production npm run dev
+     ```
+
+
+  [1]: http://www.ruanyifeng.com/blog/2016/10/npm_scripts.html
+  [2]: http://javascript.ruanyifeng.com/nodejs/process.html#toc5
