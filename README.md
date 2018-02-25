@@ -16,6 +16,9 @@
 - [Vue2.0组件间事件派发机制](./README2018-01-02.md)
 - [npm -开发与生产环境](./README8-15.md)
 ---
+## 《JavaScript 语言精粹》(修订版) 读书笔记
+- [第四章 函数]()
+---
 ## Zepto ##
 - [Zepto源码分析- 正则表达式](./README12-20.md)
 - [Zepto源码分析- DOM操作篇](./README12-21.md)
