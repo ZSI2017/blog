@@ -9,7 +9,7 @@
   <body>
     <div id="app" style="width:100%;border:1px solid black;padding:20px;box-sizing:border-box">
       {{message}}
-      <!-- <p v-if = "seen" :class="message">现在你看到我了</p>
+      <p v-if = "seen" :class="message">现在你看到我了</p>
       <div class="static" :class="{active:isActive,'text-danger':hasError}" ></div>
 
        <div :style ="{color:activeColor,fontSize:fontSize+'px'}"></div>
@@ -24,26 +24,26 @@
         </div>
         <div v-else>
             not 0/1
-        </div> -->
+        </div>
 
-        <!-- <div v-for="(item,idx) in items" :key="idx">
-           {{idx}} --- {{item.product}}
-        </div> -->
+        <div v-for="(item,idx) in items" :key="idx">
+          <span :class="['one',(item.is)&&'three']" @click="change(item)" >{{idx}} --- {{item.product}} <span>
+        </div>
 
-        <!-- <input v-model = "message" placeholer= "edit me">
+     <input v-model = "message" placeholer= "edit me">
         <p>Message is {{message}}</p>
 
-        <button @click="handleClick" type="button" name="button">methods 点击测试</button> -->
+        <button @click="handleClick" type="button" name="button">methods 点击测试</button>
 
     <!--  child 组件  -->
 
 
-    <!-- <br/> <hr />
+    <br/> <hr />
 
     <fieldset>
       <legend> 子组件 my-child </legend>
       <my-child :my-message.sync="message"></my-child>
-    </fieldset> -->
+    </fieldset>
 
 
     <fieldset>
@@ -69,6 +69,30 @@
         <input @click="handleme" type="button" name="" value="click me change message">
       </div>
     </template>
+
+    <template id="todoList">
+    <div class="demo">
+        <h1>vue-todolist</h1>
+        <p id="newlist">
+            <input v-model="newtodo" v-on:keyup.enter="addlist" type="text">
+            <time>{{uptime}}</time>
+        </p>
+        <ul class="mylist">
+            <h3 style="margin:0">mylist-todo</h3>
+            <li v-for="item in filterlists()">
+                <input type="checkbox"  v-model="item.ischeck">
+                <span v-bind:class="{completed:item.ischeck}">{{item.text}}</span>
+                <span @click="dellist(item)" class="del">&times;</span>
+                <span class="addtime">{{item.addtime}}</span>
+            </li>
+        </ul>
+        <div class="control">
+            <button @click="mycom">已完成</button>
+            <button @click="mynot">未完成</button>
+            <button @click="myall">全部</button>
+        </div>
+    </div>
+</template>
     <script>
 
 
@@ -107,13 +131,18 @@
           }
         }
       });
+      Vue.component("todoList",{
+        props:[],
+        template:"#todoList",
+
+      })
 
       var app = new Vue({
         el:"#app",
         data:{
           items:[
-           {product:"foo"},
-           {product:"bar"}
+           {product:"foo",is:true},
+           {product:"bar",is:false}
          ],
          item:{
             status:"待完成"
