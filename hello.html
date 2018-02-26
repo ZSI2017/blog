@@ -56,6 +56,10 @@
         </p>
 
     </fieldset>
+
+
+<span :class="[mycolor(item.status),'gray']">{{item.status}}</span>
+
     </div>
 
     </div>
@@ -140,6 +144,9 @@
            {product:"foo",is:true},
            {product:"bar",is:false}
          ],
+         item:{
+            status:"待完成"
+          },
          bComputed:false,
           num:3,
           message:'hello vue',
@@ -156,6 +163,13 @@
           }
         },
         methods:{
+          mycolor(str){
+            if(str === "待完成") {
+              return "red"
+            }else {
+              return "blue"
+            }
+          },
           handleClick(){
              this.message = "I am just clicking"
           },
@@ -174,6 +188,7 @@
           }
         },
         computed:{
+
            count(){
              return store.getters.getState
            }
