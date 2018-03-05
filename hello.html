@@ -9,14 +9,19 @@
   <body>
     <div id="app" style="width:100%;border:1px solid black;padding:20px;box-sizing:border-box">
       {{message}}
-      <p v-if = "seen" :class="message">现在你看到我了</p>
-      <div class="static" :class="{active:isActive,'text-danger':hasError}" ></div>
+
+
+      <!-- <p v-if = "seen" :class="message">现在你看到我了</p> -->
+
+        <!-- class 样式渲染   -->
+      <!-- <div class="static" :class="{active:isActive,'text-danger':hasError}" ></div> -->
 
        <div :style ="{color:activeColor,fontSize:fontSize+'px'}"></div>
 
         <div v-bind:style="[baseStyles, overridingStyles]"></div>
 
-        <div v-if="num === 0">
+        <!-- v-if -->
+        <!-- <div v-if="num === 0">
          0
         </div>
         <div v-else-if="num === 1">
@@ -24,26 +29,28 @@
         </div>
         <div v-else>
             not 0/1
-        </div>
+        </div> -->
 
+       <!-- 列表渲染 -->
         <div v-for="(item,idx) in items" :key="idx">
           <span :class="['one',(item.is)&&'three']" @click="change(item)" >{{idx}} --- {{item.product}} <span>
         </div>
 
-     <input v-model = "message" placeholer= "edit me">
+       <!-- v-model -->
+     <!-- <input v-model = "message" placeholer= "edit me">
         <p>Message is {{message}}</p>
 
-        <button @click="handleClick" type="button" name="button">methods 点击测试</button>
+        <button @click="handleClick" type="button" name="button">methods 点击测试</button> -->
 
     <!--  child 组件  -->
 
 
     <br/> <hr />
 
-    <fieldset>
+    <!-- <fieldset>
       <legend> 子组件 my-child </legend>
       <my-child :my-message.sync="message"></my-child>
-    </fieldset>
+    </fieldset> -->
 
 
     <fieldset>
@@ -58,7 +65,7 @@
     </fieldset>
 
 
-<span :class="[mycolor(item.status),'gray']">{{item.status}}</span>
+<!-- <span :class="[mycolor(item.status),'gray']">{{item.status}}</span> -->
 
     </div>
 
@@ -70,7 +77,7 @@
       </div>
     </template>
 
-    <template id="todoList">
+    <!-- <template id="todoList">
     <div class="demo">
         <h1>vue-todolist</h1>
         <p id="newlist">
@@ -92,7 +99,7 @@
             <button @click="myall">全部</button>
         </div>
     </div>
-</template>
+</template> -->
     <script>
 
 
@@ -131,11 +138,11 @@
           }
         }
       });
-      Vue.component("todoList",{
-        props:[],
-        template:"#todoList",
-
-      })
+      // Vue.component("todoList",{
+      //   props:[],
+      //   template:"#todoList",
+      //
+      // })
 
       var app = new Vue({
         el:"#app",
