@@ -18,7 +18,7 @@
 ---
 ## 《JavaScript 语言精粹》(修订版) 读书笔记 ##
 - [第四章 函数](./README2018-02-25.md)
-- [第四章 函数(二)](./README2018-03-05.md)
+- [第四章 函数(二)](https://github.com/ZSI2017/Article/issues/1)
 ---
 ## Zepto ##
 - [Zepto源码分析- 正则表达式](./README12-20.md)
