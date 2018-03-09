@@ -1,5 +1,7 @@
 
----
+>  归纳一些零碎的知识点，墓表 ：每周一篇 :smile:
+
+
 
 ## originJS ##
 - [Cookie 简介](./README2017/README8/README8-12.md)
@@ -8,6 +10,7 @@
 - [前端代码规范](./README2017/README12/README12-16.md)
 - [JS 模块导入/导出](./README2017/README12/README12-17.md)
 - [高级函数技巧（一） 函数防抖与节流](./README2017/README12/README12-18.md)
+
 ---
 ## Vue ##
 - [v-model 详解](./README2017/README8/README8-13.md)
@@ -15,10 +18,12 @@
 - [npm -开发与生产环境](./README2017/README8/README8-15.md)
 - [Vue2.0组件间事件派发机制](./README2018/README1/README2018-01-02.md)
 - [Vue2.x 总结](./README2018/README1/README2018-01-27.md)
+
 ---
 ## 《JavaScript 语言精粹》(修订版) 读书笔记 ##
 - [第四章 函数](./README2018/README2/README2018-02-25.md)
-- [第四章 函数(二)](./README2018/README3/README2018-03-05.md)
+- [第四章 函数(二)](https://github.com/ZSI2017/Article/issues/1)
+
 ---
 ## Zepto ##
 - [Zepto源码分析- 正则表达式](./README2017/README12/README12-20.md)
