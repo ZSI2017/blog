@@ -11,17 +11,17 @@
       {{message}}
 
 
-      <!-- <p v-if = "seen" :class="message">现在你看到我了</p> -->
+      <p v-show = "seen" :class="message">show-现在你看到我了</p>
 
         <!-- class 样式渲染   -->
-      <!-- <div class="static" :class="{active:isActive,'text-danger':hasError}" ></div> -->
+      <div class="static" :class="['one',isActive?'text-danger':'hasError']">object</div>
 
-       <div :style ="{color:activeColor,fontSize:fontSize+'px'}"></div>
+       <div :style ="{color:activeColor,fontSize:fontSize+'px'}">object style</div>
 
-        <div v-bind:style="[baseStyles, overridingStyles]"></div>
+        <div v-bind:style="[baseStyles, overridingStyles]">Array</div>
 
         <!-- v-if -->
-        <!-- <div v-if="num === 0">
+        <div v-if="num === 0">
          0
         </div>
         <div v-else-if="num === 1">
@@ -29,7 +29,7 @@
         </div>
         <div v-else>
             not 0/1
-        </div> -->
+        </div>
 
        <!-- 列表渲染 -->
         <div v-for="(item,idx) in items" :key="idx">
@@ -37,20 +37,20 @@
         </div>
 
        <!-- v-model -->
-     <!-- <input v-model = "message" placeholer= "edit me">
+       <input v-model = "message" placeholer= "edit me">
         <p>Message is {{message}}</p>
 
-        <button @click="handleClick" type="button" name="button">methods 点击测试</button> -->
+        <button @click="handleClick" type="button" name="button">methods 点击测试</button>
 
     <!--  child 组件  -->
 
 
     <br/> <hr />
 
-    <!-- <fieldset>
+    <fieldset>
       <legend> 子组件 my-child </legend>
       <my-child :my-message.sync="message"></my-child>
-    </fieldset> -->
+    </fieldset>
 
 
     <fieldset>
@@ -147,6 +147,7 @@
       var app = new Vue({
         el:"#app",
         data:{
+          myMessage:"child-message",
           items:[
            {product:"foo",is:true},
            {product:"bar",is:false}
@@ -157,7 +158,7 @@
          bComputed:false,
           num:3,
           message:'hello vue',
-          seen:true,
+          seen:false,
           isActive:true,
           hasError:false,
           activeColor: 'red',
