@@ -10,7 +10,7 @@
 - [前端代码规范](./README2017/README12/README12-16.md)
 - [JS 模块导入/导出](./README2017/README12/README12-17.md)
 - [高级函数技巧（一） 函数防抖与节流](./README2017/README12/README12-18.md)
-- [call,apply ,bind的三种用法]
+- [call,apply and bind in JS](./README2018/README3/README2018-03-09.md)
 - [js 中 多变的 this]
 - [content 和 scope]
 ---
