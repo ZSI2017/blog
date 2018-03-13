@@ -14,7 +14,7 @@
 - [高级函数技巧（一） 函数防抖与节流](./README2017/README12/README12-18.md)
 - [call,apply and bind in JS](https://github.com/ZSI2017/blog/issues/2)
 - [js 基础知识整理](https://github.com/ZSI2017/blog/issues/3)
-- [css 基础知识整理]
+- [css 基础知识整理](https://github.com/ZSI2017/blog/issues/4)
 - [content 和 scope]
 
 ---
