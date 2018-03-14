@@ -13,7 +13,8 @@
 - [JS 模块导入/导出](./README2017/README12/README12-17.md)
 - [高级函数技巧（一） 函数防抖与节流](./README2017/README12/README12-18.md)
 - [call,apply and bind in JS](https://github.com/ZSI2017/blog/issues/2)
-- [js 基础知识整理](https://github.com/ZSI2017/blog/issues/3)
+- [js 基础知识整理 - 抽象篇](https://github.com/ZSI2017/blog/issues/3)
+- [js 基础知识整理 - 代码篇](https://github.com/ZSI2017/blog/issues/5)
 - [css 基础知识整理]
 - [content 和 scope]
 
