@@ -49,7 +49,7 @@
 
     <fieldset>
       <legend> 子组件 my-child </legend>
-      <my-child :my-message.sync="message"></my-child>
+      <my-child :my-message.sync="message"  v-bind.sync="{ foo: 1, bar: 2 }"></my-child>
     </fieldset>
 
 
@@ -73,6 +73,8 @@
     <template id="child">
       <div>
         <span id="child"> I am from childe + {{myMessage}}</span><br />
+        <span id="child"> I am from childe + {{foo}}</span><br />
+        <span id="child"> I am from childe + {{bar}}</span><br />
         <input @click="handleme" type="button" name="" value="click me change message">
       </div>
     </template>
@@ -130,7 +132,7 @@
 
      })
       Vue.component('myChild',{
-        props:['myMessage'],
+        props:['myMessage','foo','bar'],
         template:'#child',
         methods:{
           handleme:function(){
