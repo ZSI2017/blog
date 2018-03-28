@@ -15,8 +15,8 @@
 - [call,apply and bind in JS](https://github.com/ZSI2017/blog/issues/2)
 - [js 基础知识整理 - 抽象篇](https://github.com/ZSI2017/blog/issues/3)
 - [js 基础知识整理 - 基础篇](https://github.com/ZSI2017/blog/issues/5)
-- [css 基础知识整理](https://github.com/ZSI2017/blog/issues/4)
 - [es6 扩展数组方法](https://github.com/ZSI2017/blog/issues/6)
+
 - [content 和 scope]
 
 ---
