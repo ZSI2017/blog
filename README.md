@@ -40,6 +40,7 @@
 - [第四章 函数](./README2018/README2/README2018-02-25.md)
 - [第四章 函数(二)](https://github.com/ZSI2017/Article/issues/1)
 - [数组](https://github.com/ZSI2017/blog/issues/8)
+- [继承](https://github.com/ZSI2017/blog/issues/9)
 ---
 
 ## Zepto ##
