@@ -17,7 +17,7 @@
 - [js 基础知识整理 - 基础篇](https://github.com/ZSI2017/blog/issues/5)
 - [es6 扩展数组方法](https://github.com/ZSI2017/blog/issues/6)
 - [js保存树状结构数据](https://github.com/ZSI2017/blog/issues/7)
-- [tab 页面间通信](https://github.com/ZSI2017/blog/issues/9)
+- [tab 页面间通信](https://github.com/ZSI2017/blog/issues/10)
 - [content 和 scope]
 
 ---
