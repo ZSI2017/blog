@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>B 页 面</title>
+  </head>
+  <body>
+
+     <script>
+      window.addEventListener("storage",function(ev){
+            if(ev.key === "message") {
+                if(!ev.newValue)
+                   return;
+                 var message = ev.newValue;
+                 console.log(message)
+                 // 发送消息给A 页面
+                 sendMessage("message echo from B");
+            }
+      });
+      function sendMessage(message) {
+         localStorage.setItem('message',JSON.stringify(message));
+         localStorage.removeItem("message");
+      }
+     </script>
+  </body>
+</html>

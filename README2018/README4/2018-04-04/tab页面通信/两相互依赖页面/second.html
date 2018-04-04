@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>依赖窗口</title>
+  </head>
+  <body>
+    <h1> 子 iframe 页面</h1>
+    <button type="button" name="button">向父页面发送消息</button>
+    <script>
+    document.querySelector("button").addEventListener("click",function(e){
+      console.log("子页面 sending...")
+       window.parent.postMessage(JSON.stringify({type:"child",data:"父页面接收"}),'*')
+    },false)
+
+    window.addEventListener('message', function() {
+      console.log("received response: ", event.data);
+    })
+
+    </script>
+  </body>
+</html>

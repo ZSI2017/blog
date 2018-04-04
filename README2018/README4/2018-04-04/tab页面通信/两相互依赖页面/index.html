@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>主页面</title>
+</head>
+
+<body>
+  <div>
+    <h1> 主页面 </h1>
+    <iframe id="child" src="http://localhost:8000/second.html"></iframe>
+
+    <button id="child-btn"> 向子页面发送消息 </button>
+  </div>
+  <script>
+    document.querySelector("#child-btn").addEventListener("click",function(){
+      sendMessage({type:"parent",data:"子页面接收"})
+    })
+    function sendMessage(data) {
+      document.querySelector("#child").contentWindow.postMessage(JSON.stringify(data), '*');
+    }
+    window.addEventListener('message', function(e) {
+      console.log("received response: ", e.data);
+    })
+  </script>
+</body>
+
+</html>

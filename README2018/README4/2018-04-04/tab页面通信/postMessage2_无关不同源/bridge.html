@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>bridge.Html</title>
+  </head>
+  <body>
+      <h1>aaaddddddddd</h1>
+    <script>
+       window.addEventListener('storage',function(ev){
+          if(ev.key == "message"){
+            // console.log("from bridge.html storage change")
+             window.parent.postMessage(ev.newValue,'*')
+          }
+       });
+
+        function message_broadcast(message){
+           localStorage.setItem('message',JSON.stringify(message));
+           localStorage.removeItem('message');
+        };
+        window.addEventListener('message',function(e){
+           let {data,source,origin} = e;
+            // 接受到了父文档的消息后，广播给其他的同源页面
+            message_broadcast(data);
+        })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+  </head>
+  <body>
+
+    <div id="app">
+  <h1>Hello App!</h1>
+  <p>
+    <!-- 使用 router-link 组件来导航. -->
+    <!-- 通过传入 `to` 属性指定链接. -->
+    <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+    <router-link to="/foo">Go to Foo</router-link>
+    <router-link to="/bar">Go to Bar</router-link>
+  </p>
+  <!-- 路由出口 -->
+  <!-- 路由匹配到的组件将渲染在这里 -->
+  <router-view></router-view>
+</div>
+
+<script>
+// index.js
+
+// Login组件里的第一个 input 绑定了一个 v-model='username'
+const Login = {data(){return {username:""}},template: '<form class="form login"><span>{{username}}</span><h2>登陆</h2><input v-model="username" type="username" class="form-control" placeholder="username" required autofocus><input class="form-control" type="password" placeholder="Password" required><button type="submit">登陆</button></form>' }
+const SignUp = { template: '<form class="form signup"><h2>注册新用户</h2><input type="username" id="inputUsername" class="form-control" placeholder="username" required autofocus><input type="password" id="inputPassword" class="form-control" placeholder="Password" required><input type="email" id="inputEmail" class="form-control" placeholder="Email address" required><button type="submit">注册</button></form>' }
+
+const routes = [
+  { path: '/', component: Login },
+  { path: '/login', component: Login },
+  { path: '/signUp', component: SignUp }
+]
+
+const router = new VueRouter({
+  routes
+})
+
+// 在data里面也有 username
+const app = new Vue({
+  router,
+  data: {
+      username: ''
+  }
+}).$mount('#app')
+// 现在，应用已经启动了！
+</script>
+
+  </body>
+</html>

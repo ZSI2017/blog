@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>B 页 面</title>
+  </head>
+  <body>
+      <button type="button" name="button">发送消息</button>
+      <iframe id="J_bridge" src="http://localhost/bridge.html" width="" height=""></iframe>
+      <script>
+      window.addEventListener('message',function(e){
+         let {data,source,origin} = e;
+         if(!data) return;
+        //  try{
+         let info = JSON.parse(JSON.parse(data));
+         console.log(info)
+         if(info.type=="ASays") {
+             console.log("ASays: "+info.data);
+              // document.querySelector('#J_bridge').contentWindow.postMessage(JSON.stringify({
+              //       type:"BSays",
+              //       data:'hello world echo from B'
+              // }),"*");
+            }
+      });
+
+    document.querySelector('button').addEventListener('click',function(){
+         console.log('send message ....')
+         document.querySelector('#J_bridge').contentWindow.postMessage(JSON.stringify({
+              type:'BSays',
+              data:"i am B"
+         }),'*')
+    })
+      </script>
+  </body>
+</html>
