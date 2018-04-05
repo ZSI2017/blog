@@ -4,27 +4,25 @@ var fileA = 'tabA.html'
 var fileB = "tabB.html"
 var bridge = "bridge.html"
 var index = fs.readFileSync(fileA);
-var send = fs.readFileSync(fileB);
+var second = fs.readFileSync(fileB);
 var bridge = fs.readFileSync(bridge);
 
 http.createServer(function (request, res) {
   var path = request.url;
   res.writeHead(200, {'Content-Type': 'text/html'})
-  if(path == "/ddd") {
-    res.end(send)
+  if(path == "/second") {
+    res.end(second)
   }else {
     res.end(index)
   }
 }).listen(8000);
+
 http.createServer(function (request, res) {
   var path = request.url;
   res.writeHead(200, {'Content-Type': 'text/html'})
-  if(path == "/ddd") {
-    res.end(send)
-  }else if(path == "/bridge.html") {
+ if(path == "/bridge.html") {
     res.end(bridge)
-  }
-  else {
+  } else {
     res.end(index)
   }
 }).listen(80);
