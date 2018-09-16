@@ -33,6 +33,7 @@
 - [npm -开发与生产环境](./README2017/README8/README8-15.md)
 - [Vue2.0组件间事件派发机制](./README2018/README1/README2018-01-02.md)
 - [Vue2.x 总结](./README2018/README1/README2018-01-27.md)
+- [vueRoute@3.0 源码分析](https://github.com/ZSI2017/studyVueRouter) | 2018/8 :full_moon:
 
 ---
 ## 《JavaScript 语言精粹》 读书笔记 ##
