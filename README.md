@@ -1,9 +1,9 @@
 
 >  归纳一些零碎的前端相关知识点，共勉，不定期更新 :smile:
 
-![](./README2018/water.jpg)
+<div align="center"><img width="90%" height="auto" style="border-radius: 3px;" src="./README2018/sun.png" />
+</div>
 
-**知（zhì）者乐（yào）水，仁者乐（yào）山；知（zhì）者动，仁者静；知者乐（lè），仁者寿。**
 
 ## originJS ##
 - [Cookie 简介](./README2017/README8/README8-12.md)
@@ -18,7 +18,6 @@
 - [es6 扩展数组方法](https://github.com/ZSI2017/blog/issues/6)
 - [js保存树状结构数据](https://github.com/ZSI2017/blog/issues/7)
 - [tab 页面间通信](https://github.com/ZSI2017/blog/issues/10)
-- [content 和 scope]
 
 ---
 ## CSS ##
@@ -48,6 +47,14 @@
 - [Zepto源码分析- DOM操作篇](./README2017/README12/README12-21.md)
 
 ---
+## shell ##
+- [sed,grep,awk命令](https://github.com/ZSI2017/Article/issues/11)
 
+---
+
+## lua ##
+- [ngx.location.capture 内部调用](https://github.com/ZSI2017/Article/issues/12) | 2018/9/16 :clock11:
+
+---
 ## awesome-list ##
 - [整理网上优秀文章,博客,论坛,...](https://github.com/ZSI2017/links)
