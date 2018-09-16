@@ -53,6 +53,7 @@
 ---
 
 ## lua ##
+- [ngx.location.capture 内部调用](https://github.com/ZSI2017/Article/issues/12)
 
 ---
 ## awesome-list ##
