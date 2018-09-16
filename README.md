@@ -1,7 +1,7 @@
 
 >  归纳一些零碎的前端相关知识点，共勉，不定期更新 :smile:
 
-<div align="center"><img width="90%" height="auto" style="border-radius: 3px;" src="./README2018/sun.png" />
+<div align="center"><img width="100%" height="auto" style="border-radius: 3px;" src="./README2018/sun.png" />
 </div>
 
 
